@@ -1,0 +1,32 @@
+#convert .mp3 to .wav format
+
+import os, re, librosa, librosa.display, soundfile as sf, pandas as pd, matplotlib.pyplot as plt
+
+# Paths
+data_dir = r"C:\Users\91971\Desktop\gunshot_data\gun_sound_v2"
+converted_dir = r"C:\Users\91971\Desktop\gunshot_data_updated"
+os.makedirs(converted_dir, exist_ok=True)
+
+# Convert files to .wav
+for file in os.listdir(data_dir):
+    file_path = os.path.join(data_dir, file)
+    
+    # Ignore non-audio files (like .gitignore)
+    if not file.endswith(".wav") and not file.startswith(".git"):
+        try:
+            y, sr = librosa.load(file_path, sr=None)
+            sf.write(os.path.join(converted_dir, os.path.splitext(file)[0] + ".wav"), y, sr)
+        except Exception as e:
+            print(f"Error converting {file}: {e}")
+    elif file.endswith(".wav"):
+        os.rename(file_path, os.path.join(converted_dir, file))
+
+# Extract metadata
+pattern = r"(\w+)_([0-9]+)m_(\w+)\.wav"
+data_info = [
+    {"filename": file, "weapon": match.group(1), "distance": int(match.group(2)), "position": match.group(3)}
+    for file in os.listdir(converted_dir) if (match := re.match(pattern, file))
+]
+df = pd.DataFrame(data_info)
+print("Dataset Information:\n", df)
+
