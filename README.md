@@ -2,8 +2,8 @@
 
 This project focuses on developing a system for gunshot sound classification and localization, aimed at improving public safety and law enforcement efficiency. The system utilizes advanced audio signal processing and machine learning techniques to classify gunshot sounds by identifying the type of firearm, determining the Direction of Arrival (DOA) of the sound, and estimating the shooter's location using time delay of arrival (TDOA) methods.
 
-1. Objectives:
-->Gunshot Classification:
+Objectives:
+1. Gunshot Classification:
 ->Identify the type of firearm (e.g., handgun, rifle, shotgun) based on acoustic characteristics of the gunshot sound.
 ->Use machine learning or deep learning models trained on a dataset of gunshot audio samples.
 
