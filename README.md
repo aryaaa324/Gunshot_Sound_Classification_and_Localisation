@@ -13,3 +13,5 @@ Objectives:
 3. Localization using TDOA:
 ->Employ the Time Difference of Arrival (TDOA) method to calculate the location of the shooter.
 ->Use the time delay between microphones to triangulate the position of the sound source in a 2D or 3D space.
+
+Dataset used : https://paperswithcode.com/dataset/bgg-dataset
